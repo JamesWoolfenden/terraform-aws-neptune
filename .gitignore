@@ -1,0 +1,22 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+*.bak
+
+# Module directory
+.terraform/
+.terraform
+.idea
+*.iml
+*.orig
+*.ini
+*~HEAD
+*backup
+*.ini
+tmp
+lambda
+*~HEAD
+*backup
+*.bak
+.terraform.tfstate.lock.info
+__pycache__/
