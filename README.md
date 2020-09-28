@@ -34,7 +34,6 @@ module "activemq" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 No requirements.
@@ -42,26 +41,26 @@ No requirements.
 ## Providers
 
 | Name | Version |
-| ---- | ------- |
-| aws  | n/a     |
+|------|---------|
+| aws | n/a |
 
 ## Inputs
 
-| Name              | Description                                        | Type     | Default                                                                                                                       | Required |
-| ----------------- | -------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- | :------: |
-| cluster           | Neptune Cluster data                               | `map`    | n/a                                                                                                                           |   yes    |
-| common_tags       | This is to help you add tags to your cloud objects | `map`    | n/a                                                                                                                           |   yes    |
-| instance          | n/a                                                | `map`    | <pre>{<br> "apply_immediately": true,<br> "count": 2,<br> "engine": "neptune",<br> "instance_class": "db.r4.large"<br>}</pre> |    no    |
-| subnet_group_name | n/a                                                | `string` | `"main"`                                                                                                                      |    no    |
-| subnet_ids        | n/a                                                | `list`   | n/a                                                                                                                           |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| cluster | Neptune Cluster data | `map` | n/a | yes |
+| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
+| instance | n/a | `map` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| subnet\_group\_name | n/a | `string` | `"main"` | no |
+| subnet\_ids | n/a | `list` | n/a | yes |
 
 ## Outputs
 
-| Name      | Description |
-| --------- | ----------- |
-| cluster   | n/a         |
-| instances | n/a         |
-| subnet    | n/a         |
+| Name | Description |
+|------|-------------|
+| cluster | n/a |
+| instances | n/a |
+| subnet | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
