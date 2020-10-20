@@ -30,8 +30,11 @@ module "activemq" {
   version     = "0.0.1"
   common_tags = var.common_tags
   subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
+  cluster     = local.config
 }
 ```
+
+This example uses a different config sourcing mechanism, the contents of a yml file - config.yaml are read into a local map block local.config.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
