@@ -8,4 +8,5 @@ resource "aws_neptune_cluster" "default" {
   apply_immediately                   = var.cluster["apply_immediately"]
   storage_encrypted                   = true
   neptune_subnet_group_name           = aws_neptune_subnet_group.default.name
+  tags                                = var.common_tags
 }

@@ -4,4 +4,5 @@ resource "aws_neptune_cluster_instance" "example" {
   engine             = var.instance["engine"]
   instance_class     = var.instance["instance_class"]
   apply_immediately  = var.instance["apply_immediately"]
+  tags               = var.common_tags
 }
