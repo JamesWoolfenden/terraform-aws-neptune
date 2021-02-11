@@ -26,10 +26,10 @@ $ checkov -d . --external-checks-dir checkov/
 
 ![alt text](./diagram/neptune.png)
 
-Include **module.activemq.tf** this repository as a module in your existing terraform code:
+Include **module.neptune.tf** this repository as a module in your existing terraform code:
 
 ```terraform
-module "activemq" {
+module "neptune" {
   source      = "JamesWoolfenden/neptune/aws"
   version     = "0.0.1"
   common_tags = var.common_tags
@@ -39,6 +39,16 @@ module "activemq" {
 ```
 
 This example uses a different config sourcing mechanism, the contents of a yml file - config.yaml are read into a local map block local.config.
+
+In the example *config.yml* you'll see 2 properties
+
+```json
+vpc_name_tag: "TEST"
+sub_tag: "Public"
+```
+
+These properties are used by data.network.tf to find your VPC and Subnet,
+switch them for whatever your VPC and Subnet are tagged.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -55,11 +65,11 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cluster | Neptune Cluster data | `map` | n/a | yes |
-| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
-| instance | n/a | `map` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| cluster | Neptune Cluster data | `map(any)` | n/a | yes |
+| common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| instance | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
 | subnet\_group\_name | n/a | `string` | `"main"` | no |
-| subnet\_ids | n/a | `list` | n/a | yes |
+| subnet\_ids | n/a | `list(any)` | n/a | yes |
 
 ## Outputs
 

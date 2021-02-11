@@ -1,16 +1,16 @@
 variable "common_tags" {
   description = "This is to help you add tags to your cloud objects"
-  type        = map
+  type        = map(any)
 }
 
 
 variable "cluster" {
   description = "Neptune Cluster data"
-  type        = map
+  type        = map(any)
 }
 
 variable "instance" {
-  type = map
+  type = map(any)
   default = {
     count             = 2
     engine            = "neptune"
@@ -24,5 +24,5 @@ variable "subnet_group_name" {
 }
 
 variable "subnet_ids" {
-  type = list
+  type = list(any)
 }
