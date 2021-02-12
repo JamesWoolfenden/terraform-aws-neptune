@@ -47,8 +47,26 @@ vpc_name_tag: "TEST"
 sub_tag: "Public"
 ```
 
-These properties are used by data.network.tf to find your VPC and Subnet,
-switch them for whatever your VPC and Subnet are tagged.
+These properties are used by *data.network.tf* to find your VPC and Subnet,
+Im expecting a tag of "Type" to be equal to the value of the sub_tags parameter for the subnets (I tag type:private and type:public)
+
+```terraform
+  filter {
+    name   = "tag:Type"
+    values = [local.config["sub_tag"]]
+  }
+```
+
+The VPC is found by it's name tag:
+
+```terraform
+  filter {
+    name   = "tag:Name"
+    values = [local.config["vpc_name_tag"]]
+  }
+```
+
+Switch tags and values for whatever your VPC and Subnet are tagged.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
