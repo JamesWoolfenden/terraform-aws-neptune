@@ -26,3 +26,8 @@ variable "subnet_group_name" {
 variable "subnet_ids" {
   type = list(any)
 }
+
+variable "vpc_id" {
+  type        = string
+  description = "Security Group needs to know where to ne made"
+}

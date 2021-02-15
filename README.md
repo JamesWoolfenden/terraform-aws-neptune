@@ -83,11 +83,14 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| allowed\_range | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
 | cluster | Neptune Cluster data | `map(any)` | n/a | yes |
 | common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
 | instance | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| security\_groups | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
 | subnet\_group\_name | n/a | `string` | `"main"` | no |
 | subnet\_ids | n/a | `list(any)` | n/a | yes |
+| vpc\_id | Security Group needs to know where to ne made | `string` | n/a | yes |
 
 ## Outputs
 

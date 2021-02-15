@@ -1,6 +1,13 @@
 module "neptune" {
-  source      = "../../"
-  common_tags = var.common_tags
-  subnet_ids  = [""]
-  cluster     = local.config
+  source        = "../../"
+  common_tags   = var.common_tags
+  subnet_ids    = [""]
+  cluster       = local.config
+  vpc_id        = element(tolist(data.aws_vpcs.main.ids), 0)
+  allowed_range = module.ip.cidr
+}
+
+module "ip" {
+  source  = "jameswoolfenden/ip/http"
+  version = "0.3.2"
 }
