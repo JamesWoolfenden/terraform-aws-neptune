@@ -30,11 +30,12 @@ Include **module.neptune.tf** this repository as a module in your existing terra
 
 ```terraform
 module "neptune" {
-  source      = "JamesWoolfenden/neptune/aws"
-  version     = "0.0.1"
-  common_tags = var.common_tags
-  subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
-  cluster     = local.config
+  source        = "JamesWoolfenden/neptune/aws"
+  version       = "0.0.1"
+  common_tags   = var.common_tags
+  subnet_ids    = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
+  cluster       = local.config
+  allowed_range = module.ip.cidr
 }
 ```
 
