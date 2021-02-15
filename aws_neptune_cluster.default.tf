@@ -1,5 +1,4 @@
 resource "aws_neptune_cluster" "default" {
-  #checkov:skip=CKV_AWS_101: This test is broken
   cluster_identifier                  = var.cluster["cluster_identifier"]
   engine                              = var.cluster["engine"]
   backup_retention_period             = var.cluster["backup_retention_period"]
