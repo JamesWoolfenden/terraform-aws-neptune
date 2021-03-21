@@ -13,7 +13,6 @@ __pycache__/
 *.ini
 *~HEAD
 *backup
-*.ini
 tmp
 lambda
 *~HEAD
@@ -21,6 +20,9 @@ lambda
 *.bak
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
-*.log
+__pycache__/
 tf.json
 tf.plan
+*.log
+output/*.json
+secrets.auto.tfvars
