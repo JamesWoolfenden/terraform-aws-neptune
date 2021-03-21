@@ -31,3 +31,8 @@ variable "vpc_id" {
   type        = string
   description = "Security Group needs to know where to ne made"
 }
+
+variable "kms_key_arn" {
+  type        = string
+  description = ""
+}

@@ -80,6 +80,21 @@ No requirements.
 |------|---------|
 | aws | n/a |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_availability_zones](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) |
+| [aws_neptune_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster) |
+| [aws_neptune_cluster_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_instance) |
+| [aws_neptune_parameter_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_parameter_group) |
+| [aws_neptune_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_subnet_group) |
+| [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -88,6 +103,7 @@ No requirements.
 | cluster | Neptune Cluster data | `map(any)` | n/a | yes |
 | common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
 | instance | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| kms\_key\_arn | n/a | `string` | n/a | yes |
 | security\_groups | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
 | subnet\_group\_name | n/a | `string` | `"main"` | no |
 | subnet\_ids | n/a | `list(any)` | n/a | yes |
@@ -100,7 +116,6 @@ No requirements.
 | cluster | n/a |
 | instances | n/a |
 | subnet | n/a |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects
