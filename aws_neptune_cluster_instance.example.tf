@@ -12,7 +12,7 @@ resource "aws_neptune_cluster_instance" "example" {
   port                         = 8182
   tags                         = var.common_tags
   //test is not true
-  preferred_backup_window       = ""
-  preferred_maintenance_windows = ""
-  publicly_accessible           = false
+  preferred_backup_window      = ""
+  preferred_maintenance_window = ""
+  publicly_accessible          = false
 }
