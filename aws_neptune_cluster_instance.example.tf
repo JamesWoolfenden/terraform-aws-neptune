@@ -5,7 +5,7 @@ resource "aws_neptune_cluster_instance" "example" {
   cluster_identifier           = aws_neptune_cluster.default.id
   engine_version               = ""
   engine                       = var.instance["engine"]
-  identifier                   = ""
+  identifier                   = "example-a"
   instance_class               = var.instance["instance_class"]
   neptune_subnet_group_name    = aws_neptune_subnet_group.default.name
   neptune_parameter_group_name = aws_neptune_parameter_group.examplea.name
