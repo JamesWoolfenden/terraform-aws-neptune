@@ -12,7 +12,7 @@ resource "aws_neptune_cluster" "default" {
   neptune_subnet_group_name            = aws_neptune_subnet_group.default.name
   port                                 = 8182
   preferred_backup_window              = var.cluster["preferred_backup_window"]
-  preferred_maintenance_windows        = "wed:04:00-wed:09:00"
+  preferred_maintenance_window         = "wed:04:00-wed:09:00"
   skip_final_snapshot                  = var.cluster["skip_final_snapshot"]
   storage_encrypted                    = true
   vpc_security_group_ids               = [aws_security_group.neptune.id]
