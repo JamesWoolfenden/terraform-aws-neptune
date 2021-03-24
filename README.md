@@ -102,6 +102,7 @@ No Modules.
 | allowed\_range | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
 | cluster | Neptune Cluster data | `map(any)` | n/a | yes |
 | common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| identifier | (optional) describe your variable | `string` | `"example-a"` | no |
 | instance | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
 | kms\_key\_arn | n/a | `string` | n/a | yes |
 | security\_groups | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
