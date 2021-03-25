@@ -12,5 +12,5 @@ resource "aws_neptune_parameter_group" "examplea" {
     value = 1
   }
 
-  tag = var.common_tags
+  tags = var.common_tags
 }
