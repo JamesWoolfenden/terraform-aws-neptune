@@ -20,7 +20,6 @@ lambda
 *.bak
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
-__pycache__/
 tf.json
 tf.plan
 *.log
