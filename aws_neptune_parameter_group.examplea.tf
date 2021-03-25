@@ -11,4 +11,6 @@ resource "aws_neptune_parameter_group" "examplea" {
     name  = "neptune_enable_audit_log"
     value = 1
   }
+
+  tag = var.common_tags
 }
