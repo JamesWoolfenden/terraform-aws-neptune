@@ -78,45 +78,45 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_availability_zones](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) |
-| [aws_neptune_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster) |
-| [aws_neptune_cluster_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_instance) |
-| [aws_neptune_parameter_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_parameter_group) |
-| [aws_neptune_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_subnet_group) |
-| [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
+| Name | Type |
+|------|------|
+| [aws_neptune_cluster.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster) | resource |
+| [aws_neptune_cluster_instance.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_instance) | resource |
+| [aws_neptune_parameter_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_parameter_group) | resource |
+| [aws_neptune_subnet_group.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_subnet_group) | resource |
+| [aws_security_group.neptune](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_range | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
-| cluster | Neptune Cluster data | `map(any)` | n/a | yes |
-| common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
-| identifier | (optional) describe your variable | `string` | `"example-a"` | no |
-| instance | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
-| kms\_key\_arn | n/a | `string` | n/a | yes |
-| security\_groups | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
-| subnet\_group\_name | n/a | `string` | `"main"` | no |
-| subnet\_ids | n/a | `list(any)` | n/a | yes |
-| vpc\_id | Security Group needs to know where to ne made | `string` | n/a | yes |
+| <a name="input_allowed_range"></a> [allowed\_range](#input\_allowed\_range) | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
+| <a name="input_cluster"></a> [cluster](#input\_cluster) | Neptune Cluster data | `map(any)` | n/a | yes |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| <a name="input_identifier"></a> [identifier](#input\_identifier) | (optional) describe your variable | `string` | `"example-a"` | no |
+| <a name="input_instance"></a> [instance](#input\_instance) | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | n/a | `string` | n/a | yes |
+| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
+| <a name="input_subnet_group_name"></a> [subnet\_group\_name](#input\_subnet\_group\_name) | n/a | `string` | `"main"` | no |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `list(any)` | n/a | yes |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Security Group needs to know where to ne made | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| cluster | n/a |
-| instances | n/a |
-| subnet | n/a |
+| <a name="output_cluster"></a> [cluster](#output\_cluster) | n/a |
+| <a name="output_instances"></a> [instances](#output\_instances) | n/a |
+| <a name="output_subnet"></a> [subnet](#output\_subnet) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects
