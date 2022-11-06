@@ -4,8 +4,8 @@ resource "aws_security_group" "neptune" {
 
   ingress {
     description     = "neptune port"
-    from_port       = 8182
-    to_port         = 8182
+    from_port       = var.port
+    to_port         = var.port
     protocol        = "tcp"
     security_groups = var.security_groups
     cidr_blocks     = var.allowed_range
@@ -16,18 +16,8 @@ resource "aws_security_group" "neptune" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    # tfsec:ignore:AWS009
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
 
-variable "allowed_range" {
-  type        = list(any)
-  description = "Cidrs that are allowed into Neptune"
-}
-
-variable "security_groups" {
-  type        = list(any)
-  description = "List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC"
-  default     = []
+  tags = var.common_tags
 }

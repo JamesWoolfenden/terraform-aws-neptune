@@ -31,7 +31,7 @@ Include **module.neptune.tf** this repository as a module in your existing terra
 ```terraform
 module "neptune" {
   source        = "JamesWoolfenden/neptune/aws"
-  version       = "0.0.1"
+  version       = "v0.2.1"
   common_tags   = var.common_tags
   subnet_ids    = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
   cluster       = local.config
@@ -78,7 +78,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.27.0 |
 
 ## Modules
 
@@ -88,24 +88,52 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_metric_alarm.NeptunePrimaryCpuAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.NeptunePrimaryGremlinRequestsPerSecAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.NeptunePrimaryMemoryAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.NeptunePrimarySparqlRequestsPerSecAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_iam_policy.NeptuneCloudWatchPolicy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.NeptuneS3Policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.NeptuneRole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_neptune_cluster.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster) | resource |
 | [aws_neptune_cluster_instance.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_instance) | resource |
+| [aws_neptune_cluster_parameter_group.NeptuneDBClusterParameterGroup](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_parameter_group) | resource |
 | [aws_neptune_parameter_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_parameter_group) | resource |
 | [aws_neptune_subnet_group.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_subnet_group) | resource |
 | [aws_security_group.neptune](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_sns_topic.NeptuneAlarmTopic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_subscription.NeptuneAlarmSubscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_AppName"></a> [AppName](#input\_AppName) | Please specify the Application Name. Used for tagging and resource names. Mandatory LOWER CASE. | `string` | `"appname"` | no |
+| <a name="input_Env"></a> [Env](#input\_Env) | Please specify the target Environment. Used for tagging and resource names. Mandatory LOWER CASE. | `string` | `"dev"` | no |
+| <a name="input_GremlinRequestsPerSecThreshold"></a> [GremlinRequestsPerSecThreshold](#input\_GremlinRequestsPerSecThreshold) | Gremlin Requests Per Sec alarm threshold. Alert when Gremlin Requests Per Sec goes above this value. In percentage used | `number` | `10000` | no |
+| <a name="input_HighCpuAlarmThreshold"></a> [HighCpuAlarmThreshold](#input\_HighCpuAlarmThreshold) | High CPU alarm threshold. Alert when CPU goes above this value.  In percentage used | `number` | `80` | no |
+| <a name="input_LowMemoryAlarmThreshold"></a> [LowMemoryAlarmThreshold](#input\_LowMemoryAlarmThreshold) | Low memory alarm threshold. Alert when memory falls below this value.  In bytes | `number` | `7e-8` | no |
+| <a name="input_NeptuneDBClusterPreferredMaintenanceWindow"></a> [NeptuneDBClusterPreferredMaintenanceWindow](#input\_NeptuneDBClusterPreferredMaintenanceWindow) | Neptune DB cluster preferred maintenance window. Format - ddd:hh24:mi-ddd:hh24:mi. Valid Days - Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints - Minimum 30-minute window. | `string` | `"mon:03:00-mon:04:00"` | no |
+| <a name="input_NeptuneDBInstancePreferredMaintenanceWindow"></a> [NeptuneDBInstancePreferredMaintenanceWindow](#input\_NeptuneDBInstancePreferredMaintenanceWindow) | Neptune DB instance preferred maintenance window. Format - ddd:hh24:mi-ddd:hh24:mi. Valid Days - Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints - Minimum 30-minute window. | `string` | `"mon:03:00-mon:04:00"` | no |
+| <a name="input_NeptuneDBSubnetGroupName"></a> [NeptuneDBSubnetGroupName](#input\_NeptuneDBSubnetGroupName) | The name for the DB Subnet Group. This value is stored as a lowercase string. Constraints, Must contain no more than 255 letters, numbers, periods, underscores, spaces, or hyphens. Must not be default. | `string` | `"sato-neptune"` | no |
+| <a name="input_NeptuneEnableAuditLog"></a> [NeptuneEnableAuditLog](#input\_NeptuneEnableAuditLog) | Neptune DB parameters. Allowed values 0, 1 | `number` | `0` | no |
+| <a name="input_NeptuneQueryTimeout"></a> [NeptuneQueryTimeout](#input\_NeptuneQueryTimeout) | Neptune DB parameters. Allowed values 10-2147483647 | `number` | `120000` | no |
+| <a name="input_Region"></a> [Region](#input\_Region) | n/a | `string` | `"eu-west-2"` | no |
+| <a name="input_SNSEmailSubscription"></a> [SNSEmailSubscription](#input\_SNSEmailSubscription) | SNS Email subscription. Optional. If not provided, no alarm subscriptions will be created | `string` | n/a | yes |
+| <a name="input_SparqlRequestsPerSecThreshold"></a> [SparqlRequestsPerSecThreshold](#input\_SparqlRequestsPerSecThreshold) | Sparql Requests Per Sec alarm threshold. Alert when Sparql Requests Per Sec goes above this value. In percentage used | `number` | `10000` | no |
+| <a name="input_Version"></a> [Version](#input\_Version) | Please specify the Application Version. Used for tagging | `string` | `"1"` | no |
 | <a name="input_allowed_range"></a> [allowed\_range](#input\_allowed\_range) | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | Neptune Cluster data | `map(any)` | n/a | yes |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | n/a | `string` | `"1.2.0.1"` | no |
+| <a name="input_family"></a> [family](#input\_family) | Neptune family | `string` | `"neptune1.2"` | no |
 | <a name="input_identifier"></a> [identifier](#input\_identifier) | (optional) describe your variable | `string` | `"example-a"` | no |
-| <a name="input_instance"></a> [instance](#input\_instance) | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "count": 2,<br>  "engine": "neptune",<br>  "instance_class": "db.r4.large"<br>}</pre> | no |
+| <a name="input_instance"></a> [instance](#input\_instance) | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "engine": "neptune",<br>  "instance_class": "db.t3.medium"<br>}</pre> | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | n/a | `string` | n/a | yes |
+| <a name="input_neptune_enable_audit_log"></a> [neptune\_enable\_audit\_log](#input\_neptune\_enable\_audit\_log) | n/a | `number` | `0` | no |
+| <a name="input_port"></a> [port](#input\_port) | Port used to connect to the Neptune cluster. Must be a valid port number between | `number` | `8182` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | List of security group Group Names if using EC2-Classic, or Group IDs if using a VPC | `list(any)` | `[]` | no |
+| <a name="input_stack"></a> [stack](#input\_stack) | n/a | `string` | `"tf-module"` | no |
 | <a name="input_subnet_group_name"></a> [subnet\_group\_name](#input\_subnet\_group\_name) | n/a | `string` | `"main"` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `list(any)` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Security Group needs to know where to ne made | `string` | n/a | yes |
@@ -118,6 +146,129 @@ No modules.
 | <a name="output_instances"></a> [instances](#output\_instances) | n/a |
 | <a name="output_subnet"></a> [subnet](#output\_subnet) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Policy
+
+This is the policy required to build this project:
+
+<!-- BEGINNING OF PRE-COMMIT-PIKE DOCS HOOK -->
+The Terraform resource required is:
+
+```golang
+resource "aws_iam_policy" "terraform_pike" {
+  name_prefix = "terraform_pike"
+  path        = "/"
+  description = "Pike Autogenerated policy from IAC"
+
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "SNS:CreateTopic",
+                "SNS:DeleteTopic",
+                "SNS:GetTopicAttributes",
+                "SNS:ListTagsForResource",
+                "SNS:SetTopicAttributes"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:DeleteAlarms",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:ListTagsForResource",
+                "cloudwatch:PutMetricAlarm",
+                "cloudwatch:TagResource",
+                "cloudwatch:UnTagResource"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateTags",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DeleteTags",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeSecurityGroups",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupIngress"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachRolePolicy",
+                "iam:CreatePolicy",
+                "iam:CreateRole",
+                "iam:DeletePolicy",
+                "iam:DeleteRole",
+                "iam:DeleteRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion",
+                "iam:GetRole",
+                "iam:GetRolePolicy",
+                "iam:ListAttachedRolePolicies",
+                "iam:ListInstanceProfilesForRole",
+                "iam:ListPolicyVersions",
+                "iam:ListRolePolicies",
+                "iam:PutRolePolicy"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": [
+                "rds:AddTagsToResource",
+                "rds:CreateDBClusterParameterGroup",
+                "rds:CreateDBParameterGroup",
+                "rds:CreateDBSubnetGroup",
+                "rds:DeleteDBClusterParameterGroup",
+                "rds:DeleteDBParameterGroup",
+                "rds:DeleteDBSubnetGroup",
+                "rds:DescribeDBClusterParameterGroups",
+                "rds:DescribeDBClusterParameters",
+                "rds:DescribeDBParameterGroups",
+                "rds:DescribeDBParameters",
+                "rds:DescribeDBSubnetGroups",
+                "rds:ListTagsForResource",
+                "rds:ModifyDBClusterParameterGroup",
+                "rds:ModifyDBParameterGroup",
+                "rds:RemoveTagsFromResource"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+})
+}
+
+
+```
+<!-- END OF PRE-COMMIT-PIKE DOCS HOOK -->
 
 ## Related Projects
 
@@ -170,11 +321,3 @@ under the License.
 
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-[github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
-[twitter]: https://twitter.com/JimWoolfenden
-[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-neptune&url=https://github.com/JamesWoolfenden/terraform-aws-neptune
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-neptune&url=https://github.com/JamesWoolfenden/terraform-aws-neptune
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-neptune
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-neptune
-[share_email]: mailto:?subject=terraform-aws-neptune&body=https://github.com/JamesWoolfenden/terraform-aws-neptune

@@ -3,6 +3,7 @@ cluster_identifier: "neptune-cluster-demo"
 engine: "neptune"
 backup_retention_period: 5
 preferred_backup_window: "07:00-09:00"
+preferred_maintenance_window: "wed:04:00-wed:06:30"
 skip_final_snapshot: true
 iam_database_authentication_enabled: true
 apply_immediately: true
