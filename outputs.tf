@@ -9,3 +9,7 @@ output "cluster" {
 output "subnet" {
   value = aws_neptune_subnet_group.default
 }
+
+output "role" {
+  value = aws_iam_role.NeptuneRole
+}

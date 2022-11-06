@@ -78,7 +78,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.27.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
@@ -144,6 +144,7 @@ No modules.
 |------|-------------|
 | <a name="output_cluster"></a> [cluster](#output\_cluster) | n/a |
 | <a name="output_instances"></a> [instances](#output\_instances) | n/a |
+| <a name="output_role"></a> [role](#output\_role) | n/a |
 | <a name="output_subnet"></a> [subnet](#output\_subnet) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -231,6 +232,7 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:ListInstanceProfilesForRole",
                 "iam:ListPolicyVersions",
                 "iam:ListRolePolicies",
+                "iam:PassRole",
                 "iam:PutRolePolicy"
             ],
             "Resource": [
@@ -241,20 +243,29 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor4",
             "Effect": "Allow",
             "Action": [
+                "rds:AddRoleToDBCluster",
                 "rds:AddTagsToResource",
+                "rds:CreateDBCluster",
                 "rds:CreateDBClusterParameterGroup",
+                "rds:CreateDBInstance",
                 "rds:CreateDBParameterGroup",
                 "rds:CreateDBSubnetGroup",
+                "rds:DeleteDBCluster",
                 "rds:DeleteDBClusterParameterGroup",
+                "rds:DeleteDBInstance",
                 "rds:DeleteDBParameterGroup",
                 "rds:DeleteDBSubnetGroup",
                 "rds:DescribeDBClusterParameterGroups",
                 "rds:DescribeDBClusterParameters",
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBInstances",
                 "rds:DescribeDBParameterGroups",
                 "rds:DescribeDBParameters",
                 "rds:DescribeDBSubnetGroups",
                 "rds:ListTagsForResource",
+                "rds:ModifyDBCluster",
                 "rds:ModifyDBClusterParameterGroup",
+                "rds:ModifyDBInstance",
                 "rds:ModifyDBParameterGroup",
                 "rds:RemoveTagsFromResource"
             ],
