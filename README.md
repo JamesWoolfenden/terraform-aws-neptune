@@ -1,6 +1,6 @@
 # terraform-aws-neptune
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-neptune/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-neptune)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-neptune/workflows/Verify/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-neptune)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-neptune.svg)](https://github.com/JamesWoolfenden/terraform-aws-neptune/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-neptune.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-neptune/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
@@ -78,7 +78,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.64.0 |
 
 ## Modules
 
@@ -125,6 +125,7 @@ No modules.
 | <a name="input_allowed_range"></a> [allowed\_range](#input\_allowed\_range) | Cidrs that are allowed into Neptune | `list(any)` | n/a | yes |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | Neptune Cluster data | `map(any)` | n/a | yes |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | n/a | `bool` | `true` | no |
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | n/a | `string` | `"1.2.0.1"` | no |
 | <a name="input_family"></a> [family](#input\_family) | Neptune family | `string` | `"neptune1.2"` | no |
 | <a name="input_identifier"></a> [identifier](#input\_identifier) | (optional) describe your variable | `string` | `"example-a"` | no |
@@ -301,7 +302,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2022 James Woolfenden
+Copyright © 2019-2023 James Woolfenden
 
 ## License
 

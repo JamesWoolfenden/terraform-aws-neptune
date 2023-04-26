@@ -2,7 +2,7 @@ resource "aws_neptune_cluster" "default" {
   apply_immediately                    = var.cluster["apply_immediately"]
   backup_retention_period              = var.cluster["backup_retention_period"]
   cluster_identifier                   = var.cluster["cluster_identifier"]
-  deletion_protection                  = false
+  deletion_protection                  = var.deletion_protection
   enable_cloudwatch_logs_exports       = ["audit"]
   engine                               = "neptune"
   engine_version                       = var.engine_version
@@ -18,4 +18,9 @@ resource "aws_neptune_cluster" "default" {
   storage_encrypted                    = true
   vpc_security_group_ids               = [aws_security_group.neptune.id]
   tags                                 = var.common_tags
+}
+
+variable "deletion_protection" {
+  type    = bool
+  default = true
 }

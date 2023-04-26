@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "NeptunePrimaryCpuAlarm" {
   period                    = "300"
   statistic                 = "Average"
   threshold                 = var.HighCpuAlarmThreshold
-  actions_enabled           = false
+  actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
   unit                      = "Percent"

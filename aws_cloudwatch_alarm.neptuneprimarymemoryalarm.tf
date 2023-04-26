@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "NeptunePrimaryMemoryAlarm" {
   period                    = "300"
   statistic                 = "Average"
   threshold                 = var.LowMemoryAlarmThreshold
-  actions_enabled           = false
+  actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
   unit                      = "Bytes"

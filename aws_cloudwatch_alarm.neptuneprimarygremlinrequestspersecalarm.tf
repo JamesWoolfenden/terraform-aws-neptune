@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "NeptunePrimaryGremlinRequestsPerSecAlarm
   period                    = "300"
   statistic                 = "Average"
   threshold                 = var.GremlinRequestsPerSecThreshold
-  actions_enabled           = false
+  actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
   dimensions = {

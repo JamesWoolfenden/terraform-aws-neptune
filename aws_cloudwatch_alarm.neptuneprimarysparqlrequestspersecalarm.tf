@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "NeptunePrimarySparqlRequestsPerSecAlarm"
   period                    = "300"
   statistic                 = "Average"
   threshold                 = var.SparqlRequestsPerSecThreshold
-  actions_enabled           = false
+  actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
   dimensions = {
