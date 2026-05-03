@@ -8,12 +8,9 @@ module "neptune" {
   allowed_range        = [module.ip.cidr]
   SNSEmailSubscription = "James.Woolfenden@gmail.com"
 }
-
 module "ip" {
-  source  = "jameswoolfenden/ip/http"
-  version = "0.3.2"
+  source = "git::https://github.com/JamesWoolfenden/terraform-http-ip.git?ref=5769331633debca683a81a38470083a0abd39049"
 }
-
 resource "aws_kms_key" "neptune" {
   enable_key_rotation = true
 }
