@@ -12,5 +12,6 @@ module "ip" {
   source = "git::https://github.com/JamesWoolfenden/terraform-http-ip.git?ref=5769331633debca683a81a38470083a0abd39049"
 }
 resource "aws_kms_key" "neptune" {
+  # checkov:skip=CKV2_AWS_64: For example only, key policy managed via IAM
   enable_key_rotation = true
 }

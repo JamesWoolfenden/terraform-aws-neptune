@@ -19,7 +19,6 @@ resource "aws_neptune_cluster" "default" {
   vpc_security_group_ids               = [aws_security_group.neptune.id]
   tags                                 = var.common_tags
 }
-
 variable "deletion_protection" {
   type    = bool
   default = true
