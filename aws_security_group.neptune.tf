@@ -1,5 +1,6 @@
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
 resource "aws_security_group" "neptune" {
+  # checkov:skip=CKV_AWS_382: Unrestricted outbound access required for resource functionality
   vpc_id      = var.vpc_id
   description = "Manages Access to Neptune resources"
 
