@@ -169,11 +169,9 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "SNS:CreateTopic",
-                "SNS:DeleteTopic",
-                "SNS:GetTopicAttributes",
-                "SNS:ListTagsForResource",
-                "SNS:SetTopicAttributes"
+                "SNS:GetSubscriptionAttributes",
+                "SNS:Subscribe",
+                "SNS:Unsubscribe"
             ],
             "Resource": [
                 "*"
@@ -221,6 +219,7 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:AttachRolePolicy",
                 "iam:CreatePolicy",
                 "iam:CreateRole",
+                "iam:CreateServiceLinkedRole",
                 "iam:DeletePolicy",
                 "iam:DeleteRole",
                 "iam:DeleteRolePolicy",
@@ -242,6 +241,17 @@ resource "aws_iam_policy" "terraform_pike" {
         },
         {
             "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor5",
             "Effect": "Allow",
             "Action": [
                 "rds:AddRoleToDBCluster",
@@ -268,7 +278,22 @@ resource "aws_iam_policy" "terraform_pike" {
                 "rds:ModifyDBClusterParameterGroup",
                 "rds:ModifyDBInstance",
                 "rds:ModifyDBParameterGroup",
+                "rds:ModifyDBSubnetGroup",
                 "rds:RemoveTagsFromResource"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor6",
+            "Effect": "Allow",
+            "Action": [
+                "sns:CreateTopic",
+                "sns:DeleteTopic",
+                "sns:GetTopicAttributes",
+                "sns:ListTagsForResource",
+                "sns:SetTopicAttributes"
             ],
             "Resource": [
                 "*"
