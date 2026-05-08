@@ -2,6 +2,7 @@ resource "aws_neptune_cluster" "default" {
   apply_immediately                    = var.cluster["apply_immediately"]
   backup_retention_period              = var.cluster["backup_retention_period"]
   cluster_identifier                   = var.cluster["cluster_identifier"]
+  copy_tags_to_snapshot                = true
   deletion_protection                  = var.deletion_protection
   enable_cloudwatch_logs_exports       = ["audit"]
   engine                               = "neptune"

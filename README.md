@@ -1,13 +1,11 @@
 # terraform-aws-neptune
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-neptune/workflows/Verify/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-neptune)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-neptune/workflows/Verify/badge.svg?branch=main)](https://github.com/JamesWoolfenden/terraform-aws-neptune)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-neptune.svg)](https://github.com/JamesWoolfenden/terraform-aws-neptune/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-neptune.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-neptune/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-aws-neptune/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-neptune&benchmark=CIS+AWS+V1.2)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-aws-neptune/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-neptune&benchmark=INFRASTRUCTURE+SECURITY)
 
 Terraform module -
 
@@ -77,8 +75,8 @@ No requirements.
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.64.0 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
@@ -87,7 +85,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_cloudwatch_metric_alarm.NeptunePrimaryCpuAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.NeptunePrimaryGremlinRequestsPerSecAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.NeptunePrimaryMemoryAlarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
@@ -107,7 +105,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_AppName"></a> [AppName](#input\_AppName) | Please specify the Application Name. Used for tagging and resource names. Mandatory LOWER CASE. | `string` | `"appname"` | no |
 | <a name="input_Env"></a> [Env](#input\_Env) | Please specify the target Environment. Used for tagging and resource names. Mandatory LOWER CASE. | `string` | `"dev"` | no |
 | <a name="input_GremlinRequestsPerSecThreshold"></a> [GremlinRequestsPerSecThreshold](#input\_GremlinRequestsPerSecThreshold) | Gremlin Requests Per Sec alarm threshold. Alert when Gremlin Requests Per Sec goes above this value. In percentage used | `number` | `10000` | no |
@@ -129,7 +127,7 @@ No modules.
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | n/a | `string` | `"1.2.0.1"` | no |
 | <a name="input_family"></a> [family](#input\_family) | Neptune family | `string` | `"neptune1.2"` | no |
 | <a name="input_identifier"></a> [identifier](#input\_identifier) | (optional) describe your variable | `string` | `"example-a"` | no |
-| <a name="input_instance"></a> [instance](#input\_instance) | n/a | `map(any)` | <pre>{<br>  "apply_immediately": true,<br>  "engine": "neptune",<br>  "instance_class": "db.t3.medium"<br>}</pre> | no |
+| <a name="input_instance"></a> [instance](#input\_instance) | n/a | `map(any)` | <pre>{<br/>  "apply_immediately": true,<br/>  "engine": "neptune",<br/>  "instance_class": "db.t3.medium"<br/>}</pre> | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | n/a | `string` | n/a | yes |
 | <a name="input_neptune_enable_audit_log"></a> [neptune\_enable\_audit\_log](#input\_neptune\_enable\_audit\_log) | n/a | `number` | `0` | no |
 | <a name="input_port"></a> [port](#input\_port) | Port used to connect to the Neptune cluster. Must be a valid port number between | `number` | `8182` | no |
@@ -142,7 +140,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_cluster"></a> [cluster](#output\_cluster) | n/a |
 | <a name="output_instances"></a> [instances](#output\_instances) | n/a |
 | <a name="output_role"></a> [role](#output\_role) | n/a |
